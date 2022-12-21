@@ -27,6 +27,15 @@ class Pueblo:
         return self.nombre
     def getLista(self, centroEstudio):
         return self.lista[centroEstudio]
+    def elCentroYaExiste(self, nombre):
+        if nombre in self.getLista("Colegio"):
+            return True
+        elif nombre in self.getLista("Instituto"):
+            return True
+        elif nombre in self.getLista("Universidad"):
+            return True
+        else:
+            return False
     def anyadirCentro(self, centro):
         if(type(centro) == Colegio):
             self.lista["Colegio"].append(centro)
@@ -110,10 +119,6 @@ while(anyadirCentro):
     estaEnLista = False
     for puebloLista in listaPueblos:
         if puebloLista.getNombre() == nombrePueblo:
-            print(puebloLista.getNombre())
-            print(nombrePueblo)
-            print("Hemos entrado aquí")
-            print("El pueblo: " + nombrePueblo + " ya existe")
             pueblo = puebloLista
             estaEnLista = True
     if estaEnLista == False:
@@ -125,8 +130,6 @@ while(anyadirCentro):
         tipoCentroEscolar = input("¿De que tipo de Centro Escolar se trata? \n a. Colegio \n b. Instituto \n c. Universidad \n")
     if(tipoCentroEscolar.upper() == "A"):
         centro = Colegio(nombre,codigo)
-        print("-----" + centro.getNombre() + "-----")
-        print("-----" + pueblo.getNombre() + "-----")
     elif(tipoCentroEscolar.upper() == "B"):
         centro = Instituto(nombre,codigo)
     elif(tipoCentroEscolar.upper() == "C"):
@@ -140,7 +143,6 @@ while(anyadirCentro):
         anyadirCentro = False
 j = 0
 i = 0
-print("\n")
 for pueblos in listaPueblos:
     print("- Pueblo " + str(j) + ": " + pueblos.getNombre())
     k = 0
