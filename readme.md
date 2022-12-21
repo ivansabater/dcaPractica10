@@ -92,14 +92,12 @@ ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuart
 ```
 
 # Bisect
-
+Para el bisect he hecho estos pasos:
 ```
 ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect start
-Already on 'master'
-Your branch is up to date with 'origin/master'.
 ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect bad
-ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git checkout 82f7facdd08247cdef2ca32e68cded0dd4c32add
-Note: switching to '82f7facdd08247cdef2ca32e68cded0dd4c32add'.
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git checkout e5a687bdd57ca722bd9e292b54635d2dc371e533
+Note: switching to 'e5a687bdd57ca722bd9e292b54635d2dc371e533'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
@@ -116,11 +114,20 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-HEAD is now at 82f7fac 1.1.1
+HEAD is now at e5a687b 1.1.0
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect good
+Bisecting: 6 revisions left to test after this (roughly 3 steps)
+[12f2449760ddc8e6b52a67ca9e4d3c1878b1cd09] 1.2.5
 ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect bad
-Bisecting: 0 revisions left to test after this (roughly 1 step)
+Bisecting: 3 revisions left to test after this (roughly 2 steps)
 [c294dc41f741dc910b3bc4cf454f9ce94f722b93] 1.2.1
 ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect good
+Bisecting: 1 revision left to test after this (roughly 1 step)
+[c5224deecac0a03a2ac7d81a79000ddd64baab0f] 1.2.3
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect bad
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[3ffd7285a455bd0ad296e7c2a328e04186583b5b] 1.2.2
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect bad
 3ffd7285a455bd0ad296e7c2a328e04186583b5b is the first bad commit
 commit 3ffd7285a455bd0ad296e7c2a328e04186583b5b
 Author: Ivan Sabater <ivansabater@gmail.com>
@@ -130,4 +137,17 @@ Date:   Wed Dec 21 16:17:18 2022 +0100
 
  holaMundo.py | 9 +++++++--
  1 file changed, 7 insertions(+), 2 deletions(-)
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect reset
+Previous HEAD position was 3ffd728 1.2.2
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
 ```
+El fallo lo había metido en el commit 1.2.2 y he comenzado a comprobar desde el commit Añadir readme.md último como bad y con la versión 1.1.0 como good
+Hay 14 commits entre medias. 
+- Primero me ha saltado al commit 1.2.5 que estaba mal
+- Después al commit 1.2.1 que estaba bien
+- Después al 1.2.3 que estaba mal
+- Y por último al 1.2.2 que estaba mal
+Entonces ha terminado diciendo que el bug se ha introducido en el commit 1.2.2 como ha sucedido.
+El bug era que cuando comprobaba si el usuario era mayor de edad. Lo comprobaba con 21 años en vez de con 18.
