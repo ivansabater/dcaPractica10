@@ -1,16 +1,95 @@
+from decimal import MIN_EMIN
 from pickle import TRUE
+MIN = 1
+MAX = 5
+
+class Menu:
+    def __init__(self):
+        self.listaUsuario = list()
+        self.listaPueblos = list()
+    def pintarMenu():
+        print("Menú")
+        print("1. Usuarios")
+        print("2. Pueblos")
+        print("3. Centros Escolares")
+        print("4. Imprimir por Pantalla")
+        print("5. Salida")
+
+    def seleccionarOpcion(self, min, max):
+        opcion = input("Elige tu opción: ")
+        salida = True
+        while(salida):
+            try:
+                opcion = int(opcion)
+                salida = False
+            except:
+                print("Introduce un número entre el " + str(min) + " y el " + str(max))
+                opcion = input("Elige tu opción: ")
+        if(opcion < min or opcion > max):
+            return opcion
+        else:
+            return opcion
+    def seleccionarMenu(self):
+        self.pintarMenu
+        opcion = self.seleccionarOpcion(MIN,MAX)
+        if opcion == 1:
+            self.menuUsuario("Usuario", True)
+        elif opcion == 2:
+            self.menuUsuario("Pueblo", True)
+        elif opcion == 3:
+            self.menuUsuario("Centro Escolar", False)
+
+    def seleccionarMenuTipo(self, opcion):
+        if opcion == 1:
+            usuario = Usuario()
+            self.listaUsuario.append(usuario)
+            print("Usuario: \n nombre: " + usuario.getNombre() + ", edad: " + str(usuario.getEdad()) + ", " + usuario.mayorEdad())
+        elif opcion == 2:
+            self.menuUsuario("Pueblo", True)
+        elif opcion == 3:
+            self.menuUsuario("Centro Escolar", False)
+    
+    def menuUsuario(self, tipoMenu, plural):
+        print("Menú " + tipoMenu)
+        print("1. Crear " + tipoMenu)
+        print("2. Eliminar " + tipoMenu)
+        print("3. Modificar " + tipoMenu)
+        if plural == False:
+            print("4. Listar " + tipoMenu + "es")
+        else:
+            print("4. Listar " + tipoMenu + "s")
+        print("5. Salida")
+        opcion = self.seleccionarOpcion(MIN,MAX)
+        self.seleccionarMenuTipo(opcion, tipoMenu)
+
+
+
+
+        
 
 
 class Usuario: 
-    def __init__(self, nombre, edad):
-        self.nombre = nombre
-        self.edad = edad
+    def __init__(self):
+        name = input("¿Cual es tu nombre?: ")
+        age = input("¿Cual es tu edad?: ")
+        age = self.validacionNumero(age)
+        self.nombre = name
+        self.edad = age
+    def validacionNumero(age):
+        salida = True
+        while(salida):
+            try:
+                age = int(age)
+                salida = False
+            except:
+                print("Introduce un número")
+                age = input("¿Cual es tu edad?: ")
     def getNombre(self):
         return self.nombre
     def getEdad(self):
         return self.edad
     def mayorEdad(self):
-        if (int(self.edad) >= 21):
+        if (int(self.edad) >= 18):
             return "Eres mayor de edad"
         else:
             return "Eres menor de edad"
@@ -81,7 +160,7 @@ class Universidad(CentroEscolar):
        self.lista = list()
 
     def anyadirEstudiante(self, usuario):
-        if(usuario.getEdad() >= 18):
+        if(usuario.getEdad() >= 21):
             self.lista.append(usuario)
         else:
             print("Error: Este estudiante no debe estar en el Instituto")
@@ -102,7 +181,6 @@ while(anyadirUsuarios):
         except:
             print("Introduce un número")
             age = input("¿Cual es tu edad?: ")
-    print(type(age))
     listaUsuarios.append(Usuario(name,age))
     i = 1
     for usuario in listaUsuarios:
