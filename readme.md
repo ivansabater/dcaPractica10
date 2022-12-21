@@ -5,8 +5,20 @@ https://github.com/ivansabater/dcaPractica10.git
 ## Global
 Para crear un alias global he tenido que poner:
 ```
+git config --global alias.co checkout
 git config --global alias.st status
 ```
+En el archivo ~/.gitconfig está esta información:
+```
+ivan@DESKTOP-BEGS1AS:~$ cat .gitconfig
+[credential]
+        helper = store
+[alias]
+        co = checkout
+        st = status
+```
+Que son los alias --global que he creado antes
+
 ### Prueba:
 
 Cuando lo he probado en un repositorio distinto me ha salido: 
