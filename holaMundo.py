@@ -12,6 +12,11 @@ class Usuario:
         else:
             return "Eres menor de edad"
 
+class CentroEscolar:
+    def __init__(self, nombre, codigo):
+        self.nombre = nombre
+        self.codigo = codigo
+
 anyadirUsuarios = True
 listaUsuarios = list()
 while(anyadirUsuarios):
