@@ -161,3 +161,31 @@ def mayorEdad(self):
             return "Eres menor de edad"
 
 ```
+# Hook
+He añadido este código en el fichero pre-commit (sin el sample)
+```
+#!/bin/sh
+
+STAGED_PY_FILES=$(git diff --cached --name-only | grep "\.py$")
+
+if [[ "$STAGED_PY_FILES" = "" ]]; then
+    exit 0
+fi
+
+echo "Running flake8 on python files..."
+if ! flake8 $STAGED_PY_FILES; then
+    echo "ERROR: flake8 failed, committing is not allowed."
+    exit 1
+fi
+
+exit 0
+
+```
+Lo que hace este fichero es verificar si se han modificado archivos con extensiones .py y, en caso afirmativo, ejecuta flake8 para verificar si hay errores de estilo
+y calidad de código en Python.
+Algunas pruebas que realiza son: 
+- Líneas demasiado largas
+- Falta de espacio entre palabras clave y paréntesis
+- Nombres de variables poco descriptivos o inadecuados
+- Importaciones no necesarias o inadecuadas
+- Falta de comentarios o documentación adecuados
