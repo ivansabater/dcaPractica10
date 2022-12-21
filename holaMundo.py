@@ -8,6 +8,7 @@ class Usuario:
         return self.edad
 
 anyadirUsuarios = True
+listaUsuarios = list()
 while(anyadirUsuarios):
     name = input("¿Cual es tu nombre?: ")
     print("Hola Mundo " + name)
@@ -16,7 +17,9 @@ while(anyadirUsuarios):
         print("Eres mayor de edad")
     else:
         print("Eres menor de edad")
-    usuario = Usuario(name,age)
-    print(usuario.getNombre())
-    print(usuario.getEdad())
+    listaUsuarios.append(Usuario(name,age))
+    i = 1
+    for usuario in listaUsuarios:
+        print("Usuario " + str(i) + ": \n nombre:" + usuario.getNombre() + ", edad: " + usuario.getEdad())
+        i += 1
     anyadirUsuarios = input("¿Quieres seguir añadiendo usuarios?: ")
