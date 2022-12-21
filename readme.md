@@ -90,3 +90,44 @@ ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuart
 [alias]
         l = log
 ```
+
+# Bisect
+
+```
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect start
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect bad
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git checkout 82f7facdd08247cdef2ca32e68cded0dd4c32add
+Note: switching to '82f7facdd08247cdef2ca32e68cded0dd4c32add'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 82f7fac 1.1.1
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect bad
+Bisecting: 0 revisions left to test after this (roughly 1 step)
+[c294dc41f741dc910b3bc4cf454f9ce94f722b93] 1.2.1
+ivan@DESKTOP-BEGS1AS:/mnt/c/Users/ivans/Desktop/Universidad/Mi Universidad/Cuarto Curso/Primer Cuatri/DCA/Practica/Practica 10/dca-ramas_Bueno$ git bisect good
+3ffd7285a455bd0ad296e7c2a328e04186583b5b is the first bad commit
+commit 3ffd7285a455bd0ad296e7c2a328e04186583b5b
+Author: Ivan Sabater <ivansabater@gmail.com>
+Date:   Wed Dec 21 16:17:18 2022 +0100
+
+    1.2.2
+
+ holaMundo.py | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+```
