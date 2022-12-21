@@ -143,7 +143,7 @@ Switched to branch 'master'
 Your branch is ahead of 'origin/master' by 1 commit.
   (use "git push" to publish your local commits)
 ```
-El fallo lo había metido en el commit 1.2.2 y he comenzado a comprobar desde el commit Añadir readme.md último como bad y con la versión 1.1.0 como good
+El fallo lo había metido en el commit 1.2.2 y he comenzado a comprobar desde el commit Añadir 1.3.3 como bad y con la versión 1.1.0 como good
 Hay 14 commits entre medias. 
 - Primero me ha saltado al commit 1.2.5 que estaba mal
 - Después al commit 1.2.1 que estaba bien
@@ -151,3 +151,13 @@ Hay 14 commits entre medias.
 - Y por último al 1.2.2 que estaba mal
 Entonces ha terminado diciendo que el bug se ha introducido en el commit 1.2.2 como ha sucedido.
 El bug era que cuando comprobaba si el usuario era mayor de edad. Lo comprobaba con 21 años en vez de con 18.
+
+Entonces en la versión 1.3.4 he corregido el fallo poniendo >= 18 en la línea 92 en la versión 1.3.4
+```
+def mayorEdad(self):
+        if (int(self.edad) >= 18):
+            return "Eres mayor de edad"
+        else:
+            return "Eres menor de edad"
+
+```
