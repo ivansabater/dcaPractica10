@@ -1,3 +1,4 @@
-print("Hello World")
-name = input("What's your name?: ")
-print("This is your name: " + name)
+name = input("¿Cual es tu nombre?: ")
+print("Hola Mundo " + name)
+age = input("¿Cual es tu edad?: ")
+print(age)
