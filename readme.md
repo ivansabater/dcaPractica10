@@ -189,3 +189,5 @@ Algunas pruebas que realiza son:
 - Nombres de variables poco descriptivos o inadecuados
 - Importaciones no necesarias o inadecuadas
 - Falta de comentarios o documentación adecuados
+
+Hay que instalar flake8 en python con pip flake8 y cada vez que cambies un .py te comprueba con flake8
